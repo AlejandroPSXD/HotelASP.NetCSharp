@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Met_Hospedaje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FechaSMes" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Dias" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ninos" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="adultos" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tarifa" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Met_HospedajeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Met_HospedajeResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Met_Alimentacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TipoA" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Hospedaje" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Met_AlimentacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Met_AlimentacionResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Met_Impuestos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Hospedaje" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Alimentacion" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Met_ImpuestosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Met_ImpuestosResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Met_Total">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Hospedaje" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Alimentacion" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Impuestos" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Met_TotalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Met_TotalResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Met_HospedajeSoapIn">
+    <wsdl:part name="parameters" element="tns:Met_Hospedaje" />
+  </wsdl:message>
+  <wsdl:message name="Met_HospedajeSoapOut">
+    <wsdl:part name="parameters" element="tns:Met_HospedajeResponse" />
+  </wsdl:message>
+  <wsdl:message name="Met_AlimentacionSoapIn">
+    <wsdl:part name="parameters" element="tns:Met_Alimentacion" />
+  </wsdl:message>
+  <wsdl:message name="Met_AlimentacionSoapOut">
+    <wsdl:part name="parameters" element="tns:Met_AlimentacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="Met_ImpuestosSoapIn">
+    <wsdl:part name="parameters" element="tns:Met_Impuestos" />
+  </wsdl:message>
+  <wsdl:message name="Met_ImpuestosSoapOut">
+    <wsdl:part name="parameters" element="tns:Met_ImpuestosResponse" />
+  </wsdl:message>
+  <wsdl:message name="Met_TotalSoapIn">
+    <wsdl:part name="parameters" element="tns:Met_Total" />
+  </wsdl:message>
+  <wsdl:message name="Met_TotalSoapOut">
+    <wsdl:part name="parameters" element="tns:Met_TotalResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsHotelSoap">
+    <wsdl:operation name="Met_Hospedaje">
+      <wsdl:input message="tns:Met_HospedajeSoapIn" />
+      <wsdl:output message="tns:Met_HospedajeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Met_Alimentacion">
+      <wsdl:input message="tns:Met_AlimentacionSoapIn" />
+      <wsdl:output message="tns:Met_AlimentacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Met_Impuestos">
+      <wsdl:input message="tns:Met_ImpuestosSoapIn" />
+      <wsdl:output message="tns:Met_ImpuestosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Met_Total">
+      <wsdl:input message="tns:Met_TotalSoapIn" />
+      <wsdl:output message="tns:Met_TotalSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsHotelSoap" type="tns:wsHotelSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Met_Hospedaje">
+      <soap:operation soapAction="http://tempuri.org/Met_Hospedaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Met_Alimentacion">
+      <soap:operation soapAction="http://tempuri.org/Met_Alimentacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Met_Impuestos">
+      <soap:operation soapAction="http://tempuri.org/Met_Impuestos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Met_Total">
+      <soap:operation soapAction="http://tempuri.org/Met_Total" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsHotelSoap12" type="tns:wsHotelSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Met_Hospedaje">
+      <soap12:operation soapAction="http://tempuri.org/Met_Hospedaje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Met_Alimentacion">
+      <soap12:operation soapAction="http://tempuri.org/Met_Alimentacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Met_Impuestos">
+      <soap12:operation soapAction="http://tempuri.org/Met_Impuestos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Met_Total">
+      <soap12:operation soapAction="http://tempuri.org/Met_Total" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsHotel">
+    <wsdl:port name="wsHotelSoap" binding="tns:wsHotelSoap">
+      <soap:address location="https://localhost:44309/wsHotel.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsHotelSoap12" binding="tns:wsHotelSoap12">
+      <soap12:address location="https://localhost:44309/wsHotel.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
